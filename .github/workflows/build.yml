@@ -31,5 +31,5 @@ jobs:
         with:
           name: notepad++
           path: |
-            notepad++/PowerEditor/visual.net/x64/Release/*.exe
-            notepad++/PowerEditor/visual.net/x64/Release/*.dll
+            notepad++/PowerEditor/bin64/*.exe
+            notepad++/PowerEditor/bin64/*.dll
