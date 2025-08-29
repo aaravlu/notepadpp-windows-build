@@ -27,12 +27,6 @@ jobs:
           ls
           msbuild notepadPlus.sln /p:Platform=x64 /p:Configuration=Release /p:WholeProgramOptimization=true
 
-      - name: Build notepad++.exe
-        working-directory: notepad++/scintilla/win32/
-        run: |
-          ls
-          msbuild notepadPlus.sln /p:Platform=x64 /p:Configuration=Release /p:WholeProgramOptimization=true
-
       - name: Archive Binary
         uses: actions/upload-artifact@v4
         with:
