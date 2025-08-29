@@ -1,7 +1,6 @@
 name: Build
 
-on:
-  push:
+on: push
 
 jobs:
   build:
@@ -32,9 +31,5 @@ jobs:
         with:
           name: notepad++
           path: |
-            notepad++/PowerEditor/bin/*.exe
-            notepad++/PowerEditor/bin/*.dll
-            notepad++/x64/*.exe
-            notepad++/x64/*.dll
-            notepad++/x64/Release/*.exe
-            notepad++/x64/Release/*.dll
+            notepad++/PowerEditor/visual.net/x64/Release/*.exe
+            notepad++/PowerEditor/visual.net/x64/Release/*.dll
