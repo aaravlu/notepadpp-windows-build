@@ -6,19 +6,19 @@ jobs:
   build:
     runs-on: windows-2022
     steps:
-      - name: Setup MSVC
-        uses: ilammy/msvc-dev-cmd@v1
-        with:
-          arch: x64
-          toolset: 14.29
-          sdk: 10.0.19041.0
-
       - name: Checkout notepad++
         uses: actions/checkout@v4
         with:
           repository: notepad-plus-plus/notepad-plus-plus
           ref: refs/tags/v8.6.9
           path: notepad++
+
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+          toolset: 14.29
+          sdk: 10.0.19041.0
 
       - name: Build notepad++.exe
         working-directory: notepad++/PowerEditor/visual.net
