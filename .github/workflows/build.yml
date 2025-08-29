@@ -1,0 +1,33 @@
+name: Build
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - name: Checkout notepad++
+        uses: actions/checkout@v4
+        with:
+          repository: pbatard/notepad++
+          ref: refs/tags/v8.1.9.3
+          path: notepad++
+
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+          toolset: 14.29
+          sdk: 10.0.19041.0
+
+      - name: Build
+        working-directory: notepad++
+        run: msbuild notepadPlus.sln /p:Platform=x64 /p:Configuration=Release /p:WholeProgramOptimization=true
+
+      - name: Archive Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: notepad++
+          path: |
+            notepad++/x64/Debug/notepad++.exe
+            notepad++/x64/Release/notepad++.exe
