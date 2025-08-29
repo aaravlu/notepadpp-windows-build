@@ -21,8 +21,14 @@ jobs:
           ref: refs/tags/v8.6.9
           path: notepad++
 
-      - name: Build
+      - name: Build notepad++.exe
         working-directory: notepad++/PowerEditor/visual.net
+        run: |
+          ls
+          msbuild notepadPlus.sln /p:Platform=x64 /p:Configuration=Release /p:WholeProgramOptimization=true
+          
+      - name: Build notepad++.exe
+        working-directory: notepad++/scintilla/win32/
         run: |
           ls
           msbuild notepadPlus.sln /p:Platform=x64 /p:Configuration=Release /p:WholeProgramOptimization=true
@@ -32,5 +38,5 @@ jobs:
         with:
           name: notepad++
           path: |
-            notepad++/x64/Debug/notepad++.exe
-            notepad++/x64/Release/notepad++.exe
+            notepad++/x64/Release/*.exe
+            notepad++/x64/Release/*.dll
