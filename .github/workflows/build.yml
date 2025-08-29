@@ -26,7 +26,7 @@ jobs:
         run: |
           ls
           msbuild notepadPlus.sln /p:Platform=x64 /p:Configuration=Release /p:WholeProgramOptimization=true
-          
+
       - name: Build notepad++.exe
         working-directory: notepad++/scintilla/win32/
         run: |
@@ -38,5 +38,9 @@ jobs:
         with:
           name: notepad++
           path: |
+            notepad++/PowerEditor/bin/*.exe
+            notepad++/PowerEditor/bin/*.dll
+            notepad++/x64/*.exe
+            notepad++/x64/*.dll
             notepad++/x64/Release/*.exe
             notepad++/x64/Release/*.dll
