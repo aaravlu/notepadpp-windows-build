@@ -4,9 +4,9 @@ on: push
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
-      - name: Checkout notepad++
+      - name: Checkout target
         uses: actions/checkout@v4
         with:
           repository: notepad-plus-plus/notepad-plus-plus
@@ -23,11 +23,17 @@ jobs:
       - name: Build notepad++.exe
         working-directory: notepad++/PowerEditor/visual.net
         run: |
-          ls
-          msbuild notepadPlus.sln /p:Platform=x64 /p:Configuration=Release /p:WholeProgramOptimization=true
+          msbuild notepadPlus.sln `
+          /p:PlatformToolset=v142 `
+          /p:WindowsTargetPlatformVersion=10.0.19041.0 `
+          /p:Platform=x64 `
+          /p:Configuration=Release `
+          /p:WholeProgramOptimization=true `
+          /p:Optimization=MinSpace `
+          /p:FunctionLevelLinking=true
 
       - name: Archive Binary
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: notepad++
           path: |
