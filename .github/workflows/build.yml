@@ -10,7 +10,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: notepad-plus-plus/notepad-plus-plus
-          ref: refs/tags/v8.6.9
+          ref: refs/tags/v8.1.9.3
           path: notepad++
 
       - name: Setup MSVC
